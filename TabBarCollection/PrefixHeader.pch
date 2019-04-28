@@ -1,0 +1,63 @@
+//
+//  PrefixHeader.pch
+//  TabBarCollection
+//
+//  Created by zz on 2019/4/25.
+//  Copyright © 2019 zz. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "KLTNavigationController.h"
+#import "Category.h"
+
+//
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+#define kTabBarHeight self.tabBarController.tabBar.frame.size.height
+
+#define kNavBarHeight 44.0
+//Tabbar高度49 + 34 = 83
+//底部安全距离
+
+#define kKeyWindow UIApplication.sharedApplication.keyWindow
+
+// 判断是否为iPhone X 系列  这样写消除了在Xcode10上的警告。
+#define kIsPhoneX \
+({BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+}\
+(isPhoneX);})
+
+//
+#define WeakSelf __weak typeof(self) weakSelf = self;
+#define StrongSelf __strong typeof(weakSelf) strongSelf = weakSelf;
+
+//RGB
+#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+#define RGB(r, g, b) RGBA(r, g, b, 1.0f)
+
+//颜色
+#define kColorWithHex(s)  [UIColor colorWithRed:(((s & 0xFF0000) >> 16))/255.0 green:(((s &0xFF00) >>8))/255.0 blue:((s &0xFF))/255.0 alpha:1.0]
+
+//随机颜色
+#define kColorRandom RGBA(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+
+//sep
+#define kColorSeprator kColorWithHex(kColorSepratorHex)
+//#define kColorSepratorHex 0xE7E7E7
+#define kColorSepratorHex 0xD4D2D4
+
+//bg
+#define kColorBg kColorWithHex(kColorBgHex)
+#define kColorBgHex 0xF6F6F6
+//#define kColorBgHex 0xF1F1F0
+
+//#define kColorOrange kColorWithHex(kColorOrangeHex)
+
+#define kColorCustom kColorWithHex(0xFDB918)
+
+#endif /* PrefixHeader_pch */
